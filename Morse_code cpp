@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+int main() {
+    string morseCode[26] = {
+        ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", 
+        ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", 
+        "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."
+    };
+
+    string message;
+    cout << "Enter a message in English (A-Z characters only): ";
+    getline(cin, message);
+
+    string fullMorse = "";
+
+    for (char c : message) {
+        if (isalpha(c)) {
+            c = toupper(c);
+            int index = c - 'A';
+            cout << c << ": " << morseCode[index] << endl;
+            fullMorse += morseCode[index] + "   ";
+        }
+    }
+
+    cout << "Full Morse Code Message: " << fullMorse << endl;
+    return 0;
+}
